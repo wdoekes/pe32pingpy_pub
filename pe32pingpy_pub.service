@@ -10,6 +10,7 @@ Type=simple
 #Environment=PE32PING_DEBUG=1
 #Environment=PE32PING_HOST0=1.2.3.4
 #Environment=PE32PING_HOST1=2.3.4.5
+#Environment=PE32PING_HOST2=example.com
 EnvironmentFile=-/etc/default/pe32pingpy_pub
 RestartSec=15
 Restart=always

@@ -154,10 +154,12 @@ async def ping_all():
         'ip.ext': (lambda: get_external_ip()),
         'gw.int': (lambda: get_gateway_ip()),
     }
-    if 'PE32PINGPY_HOST0' in os.environ:
-        HOSTS['host.0'] = os.environ['PE32PINGPY_HOST0']
-    if 'PE32PINGPY_HOST1' in os.environ:
-        HOSTS['host.1'] = os.environ['PE32PINGPY_HOST1']
+    if 'PE32PING_HOST0' in os.environ:
+        HOSTS['host.0'] = os.environ['PE32PING_HOST0']
+    if 'PE32PING_HOST1' in os.environ:
+        HOSTS['host.1'] = os.environ['PE32PING_HOST1']
+    if 'PE32PING_HOST2' in os.environ:
+        HOSTS['host.2'] = os.environ['PE32PING_HOST2']
 
     pings = 4
     res = dict((key, Ping(key, value)) for key, value in HOSTS.items())
@@ -176,7 +178,7 @@ async def main():
         ping_results = await ping_all()
         log.info(f'Ping results: {ping_results}')
         publisher.publish(ping_results)
-        await asyncio.sleep(1)
+        await asyncio.sleep(900)
 
 
 if __name__ == '__main__':
