@@ -1,0 +1,22 @@
+[Unit]
+Description=PE32 Ping exporter
+After=network.target
+
+[Service]
+Type=simple
+#Environment=PE32PING_BROKER=test.mosquitto.org
+#Environment=PE32PING_TOPIC=PE32/RASPI
+#Environment=PE32PING_GUID=EUI48:11:22:33:44:55:66
+#Environment=PE32PING_DEBUG=1
+#Environment=PE32PING_HOST0=1.2.3.4
+#Environment=PE32PING_HOST1=2.3.4.5
+EnvironmentFile=-/etc/default/pe32pingpy_pub
+RestartSec=15
+Restart=always
+ExecStart=/usr/bin/python3 /srv/pe32pingpy_pub/pe32pingpy_pub.py
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+# vim: set syn=dosini:
