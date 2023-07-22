@@ -178,7 +178,7 @@ async def main():
         ping_results = await ping_all()
         log.info(f'Ping results: {ping_results}')
         publisher.publish(ping_results)
-        await asyncio.sleep(900)
+        await asyncio.sleep(300)
 
 
 if __name__ == '__main__':
