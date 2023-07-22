@@ -152,8 +152,16 @@ async def ping_all():
         'dns.cfl': '1.1.1.1',
         'dns.ggl': '8.8.8.8',
         'ip.ext': (lambda: get_external_ip()),
+        # "hop 1": $ ping -c1 -n -t 1 1.1.1.1
+        # PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
+        # From 192.168.x.x icmp_seq=1 Time to live exceeded
         'gw.int': (lambda: get_gateway_ip()),
     }
+    if 'PE32PING_GWEXT' in os.environ:
+        # "hop 2": $ ping -c1 -n -t 2 1.1.1.1
+        # PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
+        # From ext.ern.al.gw icmp_seq=1 Time to live exceeded
+        HOSTS['gw.ext'] = os.environ['PE32PING_GWEXT']
     if 'PE32PING_HOST0' in os.environ:
         HOSTS['host.0'] = os.environ['PE32PING_HOST0']
     if 'PE32PING_HOST1' in os.environ:

@@ -8,6 +8,7 @@ Type=simple
 #Environment=PE32PING_TOPIC=PE32/RASPI
 #Environment=PE32PING_GUID=EUI48:11:22:33:44:55:66
 #Environment=PE32PING_DEBUG=1
+#Environment=PE32PING_GWEXT=mye.xte.rna.lgw
 #Environment=PE32PING_HOST0=1.2.3.4
 #Environment=PE32PING_HOST1=2.3.4.5
 #Environment=PE32PING_HOST2=example.com
